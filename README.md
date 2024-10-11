@@ -6,7 +6,12 @@ The company has collected data related to the personal information, education an
 This project will make an important contribution to the company's talent development strategy, helping to create a team of high-quality and most suitable data experts, contributing to taking the company further in the field of data technology.
 
 
-**1. Extract Data**
+# **1. Extract Data**
+The dataset used in the project comes from a company that offers training in Data Science. It contains personal information about candidates who enrolled in these courses, with the goal of determining which individuals are genuinely interested in working for the company after completing the training. The data includes demographic details, education, work experience, and relevant feature such as: city, gender, education level, company size, relevant experience, training hours completed,...
+
+The data includes both categorical and numerical features, and the goal is to analyze, preprocess, and build a predictive model to determine whether candidates will seek job changes after training.
+
+The data is collected from multiple sources, including Google Sheets, Excel files, and CSV files. These are loaded using Python libraries like pandas, requests, and SQLAlchemy for database connections. Ensuring proper loading of this data is essential, and a preliminary inspection is done by checking the first few rows of the datasets.
 
 Let's start with importing pandas to our notebook
 ```
