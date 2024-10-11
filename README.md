@@ -184,11 +184,12 @@ Show the columns of the dataframe and their types, will provide information abou
 ```
 enrollies_education.info()
 ```
-Check the sum of the error values
+Check the sum of the error values. The isnull().sum() function checks the number of missing values ​​in each column. This is necessary to determine which columns have missing data and decide how to handle them.
 ```
 enrollies_education.isnull().sum()
 ```
-We have category columns considered as objects and missing data.
+
+Columns such as enrolled_university, education_level, and major_discipline contain missing values, and they are replaced with the word 'Missing'. Instead of removing the missing values, this replacement helps retain the information in the data, while also indicating that there is a piece of information that was not provided by the participant.
 
 Let's fix their types and make them category and fill missing data
 ```
@@ -196,6 +197,8 @@ enrollies_education['enrolled_university'] = enrollies_education['enrolled_unive
 enrollies_education['education_level'] = enrollies_education['education_level'].fillna('Missing')
 enrollies_education['major_discipline'] = enrollies_education['major_discipline'].fillna('Missing')
 ```
+
+After filling in the missing values, the education_level, major_discipline, and enrolled_university columns are converted to the category data type. This data type optimizes performance when working with data with a small number of unique and repeated values, and makes it easier for machine learning algorithms to process.
 ```
 tow_cols = ['education_level', 'major_discipline', 'enrolled_university']
 enrollies_education[tow_cols] = enrollies_education[tow_cols].astype('category')
@@ -217,25 +220,32 @@ work_experience.info()
 We have category columns considered as objects and missing data.
 
 Let's fix their types and make them category and fill missing data
+
+Use the most common value (mode) of the experience column to replace missing values. This helps retain useful information without eliminating rows with missing values.
+
+All missing values ​​in the experience column will then be filled with the calculated mode value.
 ```
 experience_mode = work_experience['experience'].mode()[0]
 work_experience['experience'] = work_experience['experience'].fillna(experience_mode)
 ```
+
+Missing values ​​in the company_size, company_type, and last_new_job columns are replaced with the keyword 'Missing'. This replacement allows you to retain rows of data without removing important information and easily identify missing values ​​in subsequent analysis.
 ```
 work_experience['company_size'] = work_experience['company_size'].fillna('Missing')
 work_experience['company_type'] = work_experience['company_type'].fillna('Missing')
 work_experience['last_new_job'] = work_experience['last_new_job'].fillna('Missing')
 ```
-Convert columns to category data type
+Convert columns to category data type. Columns such as company_size, company_type, last_new_job, relevent_experience, and experience are converted to category data types. Category data types help optimize memory and improve calculation speed, especially when working with data containing many repeating values.
 ```
 cat_cols = ['company_size', 'company_type', 'last_new_job', 'relevent_experience', 'experience']
 work_experience[cat_cols] = work_experience[cat_cols].astype('category')
 ```
-Check whether everything is okay. Output a test sample (5 random rows):
+Check whether everything is okay. Random sampling from dataframe helps to visually check whether the data has been processed properly
 ```
 work_experience.sample(5)
 ```
-Check again (output columns and their types):
+
+Finally, use info() again to check if all columns have been retyped and handle incorrect values.
 ```
 work_experience.info()
 ```
@@ -267,17 +277,24 @@ employment.info()
 Looks like the data has no missing values, dataset is clean
 
 # **3. Load data**
+First establish a connection to the database. The SQLAlchemy library allows you to connect, manage, and interact with databases in a flexible and efficient way.
 ```
 from sqlalchemy import create_engine
 ```
+
+Defines the path of the SQLite database that will be stored in the db_path variable
 ```
 # Path to the SQLite database
 db_path = 'data_warehouse.db'
 ```
+
+The engine that connects to the SQLite database is created using the create_engine function from SQLAlchemy
 ```
 # Create an SQLAlchemy engine
 engine = create_engine(f'sqlite:///{db_path}')
 ```
+
+Let's all store data in a database.
 ```
 employment.to_sql('Fact_Employment', engine, if_exists= 'replace', index=False)
 enrollies_data.to_sql('Dim_Enrollies', engine, if_exists= 'replace', index=False)
