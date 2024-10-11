@@ -1,5 +1,9 @@
 # HR_Analytics-Job_Change_of_Data_Scientists
+A company operating in the field of Big Data and Data Science is looking to recruit data professionals from a pool of people who have successfully completed courses organized by the company. In order to optimize the recruitment and training process, the company wants to clearly identify candidates who are truly intending to work for the company after completing the course, and those who are simply looking for new job opportunities. This classification is important in reducing costs and time, while improving the quality of the training program as well as planning future courses.
 
+The company has collected data related to the personal information, education and work experience of candidates when they register and take courses. By analyzing this data, the company will be able to categorize candidates into different groups based on their desires and motivations. This helps the company not only focus on candidates with long-term potential but also improve the quality of training and course planning, ensuring that the candidates joining are in line with the company's vision and goals.
+
+This project will make an important contribution to the company's talent development strategy, helping to create a team of high-quality and most suitable data experts, contributing to taking the company further in the field of data technology.
 **1. Extract Data**
 
 Let's start with importing pandas to our notebook
