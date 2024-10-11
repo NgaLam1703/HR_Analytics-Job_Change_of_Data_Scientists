@@ -28,9 +28,7 @@ url = 'https://docs.google.com/spreadsheets/d/' + google_sheet_id + '/export?for
 enrollies_data = pd.read_excel(url, sheet_name = 'enrollies')
 ```
 The first 5 rows
-
 Before performing any operation with data, you need to take a look to ensure that everything is okay with the loaded data.
-
 In the cell below, write a code to output the first 5 rows of the dataframe.
 ```
 enrollies_data.head(5)
@@ -49,9 +47,7 @@ with open(file_name, 'wb') as file:
 enrollies_education = pd.read_excel(f'./{file_name}')
 ```
 The first 5 rows
-
 Before performing any operation with data, you need to take a look to ensure that everything is okay with the loaded data.
-
 In the cell below, write a code to output the first 5 rows of the dataframe.
 ```
 enrollies_education.head()
@@ -137,31 +133,39 @@ employment.head(5)
 
 ## **2.1. Enrollies' data**
 
-Show the columns of the dataframe and their types:
+Show the columns of the dataframe and their types, will provide information about the columns in the dataframe, including the number of non-missing values, the data type of each column. This check is to determine if any columns need to be processed or have their data type changed.
 ```
 enrollies_data.info()
 ```
 Looking at the table we can see that the city and gender columns are not of the same data type.
 
-Let's fix their types and make them category:
+Now we will convert the column data type to categorical.
+
+full_name column: This column is converted to a string data type to ensure that the full name is treated as a string.
+
 ```
 enrollies_data['full_name'] = enrollies_data['full_name'].astype('string')
 ```
+
+city ​​and gender columns: These two columns are converted to category type, which helps save memory and optimizes for later analysis operations. The category type is suitable for data with many repeated values ​​and a small number of unique values.
 ```
 cat_cols = ['city', 'gender']
 enrollies_data[cat_cols] = enrollies_data[cat_cols].astype('category')
 ```
-Check again (output columns and their types):
+After converting the data type, we use info() again to check that the changes were made correctly. This ensures that columns like city and gender have been converted to categoricals and full_name has been converted to string.
 
 ```
 enrollies_data.info()
 ```
-After converting the data type to category, the gender column has a lot of missing data.
+The city, gender, and full_name columns are all converted to lowercase. This helps avoid case-insensitivity issues during data analysis and processing.
+
 ```
 enrollies_data['city'] = enrollies_data['city'].str.lower()
 enrollies_data['gender'] = enrollies_data['gender'].str.lower()
 enrollies_data['full_name'] = enrollies_data['full_name'].str.lower()
 ```
+
+Missing values ​​in the gender column are replaced by the most common value (mode) in this column. Using mode() gets the most common value in the gender column, and then the missing values ​​are filled with this value. Finally, the data type of the gender column is converted to categorical.
 ```
 gender_mode = enrollies_data['gender'].mode()[0]
 enrollies_data['gender'] = enrollies_data['gender'].fillna(gender_mode).astype('category')
@@ -176,7 +180,7 @@ enrollies_data.info()
 ```
 ## **2.2. Enrollies' education**
 
-Show the columns of the dataframe and their types:
+Show the columns of the dataframe and their types, will provide information about the columns in the dataframe, including the number of non-missing values, the data type of each column. This check is to determine if any columns need to be processed or have their data type changed.
 ```
 enrollies_education.info()
 ```
@@ -206,7 +210,7 @@ enrollies_education.sample(5)
 ```
 ## **2.3. Enrollies' working experience**
 
-Show the columns of the dataframe and their types:
+Show the columns of the dataframe and their types, will provide information about the columns in the dataframe, including the number of non-missing values, the data type of each column. This check is to determine if any columns need to be processed or have their data type changed.
 ```
 work_experience.info()
 ```
@@ -237,7 +241,7 @@ work_experience.info()
 ```
 ## **2.4. Training hours**
 
-Show the columns of the dataframe and their types:
+Show the columns of the dataframe and their types, will provide information about the columns in the dataframe, including the number of non-missing values, the data type of each column. This check is to determine if any columns need to be processed or have their data type changed.
 ```
 training_hours.info()
 ```
@@ -245,7 +249,7 @@ Looks like the data has no missing values, the data is complete
 
 ## **2.5. City development index**
 
-Show the columns of the dataframe and their types:
+Show the columns of the dataframe and their types, will provide information about the columns in the dataframe, including the number of non-missing values, the data type of each column. This check is to determine if any columns need to be processed or have their data type changed.
 ```
 cities.info()
 ```
@@ -256,7 +260,7 @@ Looks like the data has no missing values ​​and no duplicate rows. Dataset i
 
 ## **2.6. Employment**
 
-Show the columns of the dataframe and their types:
+Show the columns of the dataframe and their types, will provide information about the columns in the dataframe, including the number of non-missing values, the data type of each column. This check is to determine if any columns need to be processed or have their data type changed.
 ```
 employment.info()
 ```
