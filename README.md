@@ -303,3 +303,45 @@ work_experience.to_sql('Dim_Working_Experience', engine, if_exists= 'replace', i
 training_hours.to_sql('Dim_Training_Hours', engine, if_exists= 'replace', index=False)
 cities.to_sql('Dim_Cities', engine, if_exists= 'replace', index=False)
 ```
+
+# **4. Instruction schedule the script
+
+**Step 1**: Prepare the Python Script
+Make sure your Python script is working properly and has been saved on your computer, for example
+
+**Step 2**: Create a Batch File (.bat)
+You need to create a batch file to run the Python script through Task Scheduler.
+1. Open Notepad.
+2. Enter the following commands:
+   ```
+   @echo off
+    cd C:\my_project\
+    python my_script.py
+    ```
+    - The first line cd C:\my_project\ will go to the directory containing your script.
+    - The line python my_script.py will run the Python script.
+3. Save the file as run_my_script.bat. Make sure you select Save as type: All Files and the extension is .bat.
+
+**Step 3**: Open Task Scheduler
+1. Press Windows + S and search for Task Scheduler.
+2. Open Task Scheduler.
+
+**Step 4**: Create a New Task
+1. In the Task Scheduler window, select Create Basic Task from the right column.
+2. Give the task a name
+3. Enter a description (optional).
+
+**Step 5**: Set Time (Trigger)
+1. Select the time you want to run the task (eg: Daily, Weekly).
+2. Select the specific time and day for the script to run automatically.
+
+**Step 6**: Set Action
+1. Select Start a Program.
+2. In the Program/script section, select Browse and find the .bat file you created in step 2.
+
+**Step 7**: Finish Setup
+Review your settings and click Finish to complete creating the task.
+
+**Step 8**: Test the Task
+1. In the Task Scheduler Library, find the task you just created, right-click and select Run to check if the script runs correctly.
+2. If the script runs successfully, the Task Scheduler will automatically re-execute it according to the schedule you set.
