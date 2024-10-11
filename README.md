@@ -304,7 +304,7 @@ training_hours.to_sql('Dim_Training_Hours', engine, if_exists= 'replace', index=
 cities.to_sql('Dim_Cities', engine, if_exists= 'replace', index=False)
 ```
 
-# **4. Instruction schedule the script
+# 4. Instruction schedule the script
 
 **Step 1**: Prepare the Python Script
 Make sure your Python script is working properly and has been saved on your computer, for example
