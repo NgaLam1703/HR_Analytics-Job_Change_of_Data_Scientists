@@ -1,6 +1,6 @@
 # HR_Analytics-Job_Change_of_Data_Scientists
 
-# **1. Extract Data**
+**1. Extract Data**
 
 Let's start with importing pandas to our notebook
 """
@@ -8,7 +8,7 @@ Let's start with importing pandas to our notebook
 import pandas as pd
 import requests
 
-"""**Loading data by Google Sheets**
+**Loading data by Google Sheets**
 
 We have the Google Sheet that stores data about enrolled students:
 https://www.google.com/url?q=https%3A%2F%2Fdocs.google.com%2Fspreadsheets%2Fd%2F1VCkHwBjJGRJ21asd9pxW4_0z2PWuKhbLR3gUHm-p4GI%2Fedit%3Fusp%3Dsharing
@@ -19,7 +19,7 @@ google_sheet_id = '1VCkHwBjJGRJ21asd9pxW4_0z2PWuKhbLR3gUHm-p4GI'
 url = 'https://docs.google.com/spreadsheets/d/' + google_sheet_id + '/export?format=xlsx'
 enrollies_data = pd.read_excel(url, sheet_name = 'enrollies')
 
-"""The first 5 rows
+The first 5 rows
 
 Before performing any operation with data, you need to take a look to ensure that everything is okay with the loaded data.
 
@@ -29,7 +29,7 @@ In the cell below, write a code to output the first 5 rows of the dataframe.
 #Your code
 enrollies_data.head(5)
 
-"""**Loading data by Excel**
+**Loading data by Excel**
 
 We have information about the educational background of the registered individuals in this file: https://www.google.com/url?q=https%3A%2F%2Fassets.swisscoding.edu.vn%2Fcompany_course%2Fenrollies_education.xlsx
 """
@@ -43,7 +43,7 @@ with open(file_name, 'wb') as file:
 #Your code
 enrollies_education = pd.read_excel(f'./{file_name}')
 
-"""The first 5 rows
+The first 5 rows
 
 Before performing any operation with data, you need to take a look to ensure that everything is okay with the loaded data.
 
@@ -53,7 +53,7 @@ In the cell below, write a code to output the first 5 rows of the dataframe.
 #Your code
 enrollies_education.head()
 
-"""**Loading data by CSV**
+**Loading data by CSV**
 
 The data to work is located in CSV file by the following link: https://www.google.com/url?q=https%3A%2F%2Fassets.swisscoding.edu.vn%2Fcompany_course%2Fwork_experience.csv
 """
@@ -66,7 +66,7 @@ with open(file_name, 'wb') as file:
 #Your code
 work_experience = pd.read_csv(f'./{file_name}')
 
-"""The first 5 rows
+The first 5 rows
 
 Before performing any operation with data, you need to take a look to ensure that everything is okay with the loaded data.
 
@@ -76,7 +76,7 @@ In the cell below, write a code to output the first 5 rows of the dataframe.
 #Your code
 work_experience.head()
 
-"""**Loading data by SQL databases**
+**Loading data by SQL databases**
 
 Let's import this:
 """
